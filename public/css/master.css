@@ -1,0 +1,139 @@
+
+body{
+    background: -moz-linear-gradient( white, gainsboro);
+    color: #2a2a2a;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.position-ref {
+    position: relative;
+}
+
+
+.top-right {
+    position: absolute;
+    top: 10px;
+    right: 50px;
+}
+.log{
+    color: #5e5d5d;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 1);
+    font-size: 16px;
+    letter-spacing: .1rem;
+    text-transform: lowercase;
+    align-items: center;
+    margin: 10px;
+}
+
+.containers{
+    color: white;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 1);
+    text-align: center;
+    background-color: #2e3436;
+    width: 100%;
+}
+
+.title {
+    font-size: 84px;
+    color: white;
+    background-image: url("http://ecole.district1.nbed.nb.ca/ecole-louis-j-robichaud/wp-content/themes/district-01-primaire/images/banniere-ordinateurs.jpg");
+    height: 50%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+
+.links > a, col{
+    color: #5e5d5d;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 1);
+    font-size: 16px;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: lowercase;
+    align-items: center;
+    margin: 10px;
+
+}
+.links > a:hover{
+    padding-top: 5px;
+    text-align: match-parent;
+    align-items: center;
+    text-decoration: underline;
+
+}
+.nav{
+    background-color: #ccd0d2;
+    height: 50px;
+    width: 100%;
+    border: 1px double grey;
+
+
+}
+.nav2{
+    height: 75%;
+    width: 15%;
+    background-color: white;
+    border: 1px double grey;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+
+}
+.titreAdmin {
+    color: #5e5d5d;
+    background-color: #ccd0d2;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 1);
+    font-size: 16px;
+    letter-spacing: .1rem;
+    text-transform: lowercase;
+    text-align: center;
+    border-bottom: 1px double grey;
+}
+
+.m-b-md {
+    margin-bottom: 30px;
+}
+ol {
+    list-style: none;
+    background: white;
+    padding: 0;
+
+}
+
+ol li {
+    background: inherit;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+ol li:hover{
+    background-color:  #ccd0d2;
+    text-underline: none;
+    color: transparent;
+    margin-left: 5px;
+
+}
+footer{
+    margin: 0px;
+}
