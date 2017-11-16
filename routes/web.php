@@ -30,6 +30,8 @@ Auth::routes();
 Route::get('user-index','UserController@index')->name('user-index');
 Route::get('user/{user}/destroy','UserController@destroyForm')->name('user-destroy');
 
+Route::get('product-index','ProductController@index')->name('product-index');
+
 Route::get('upDateRole',['uses'=>'UserController@upDateRole','as'=>'upDateRole']);
 Route::resource('user', 'UserController');
 Route::resource('product', 'ProductController');

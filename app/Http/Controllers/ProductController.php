@@ -12,7 +12,10 @@ class ProductController extends Controller
    */
   public function index()
   {
-    
+    $products = \App\Product::with('marque')->get();
+
+    if ($products != null)
+        return view('product-index', compact ('products'));
   }
 
   /**

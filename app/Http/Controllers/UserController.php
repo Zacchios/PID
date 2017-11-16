@@ -15,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
         $users = \App\User::with('role')->get();
-        /*select('id','name','firstname','email','birthdate','deliveryadress','bilingadress')->get();*/
+
 
         $listrole = \App\Role::all();
 
