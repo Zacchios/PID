@@ -1,8 +1,8 @@
 <?php 
 
 namespace App\Http\Controllers;
-
-class DesktopController extends Controller 
+use Illuminate\Http\Request;
+class DesktopController extends Controller
 {
 
   /**
@@ -12,7 +12,11 @@ class DesktopController extends Controller
    */
   public function index()
   {
-    
+      $desktops = \App\Desktop::with(['type','product'])->get();
+
+
+      if ($desktops != null)
+          return view('desktopindex', compact ('desktops'));
   }
 
   /**
@@ -22,7 +26,10 @@ class DesktopController extends Controller
    */
   public function create()
   {
-    
+
+      $listemarque = \App\Marque::orderby('id')->pluck('name','id');
+      $listtype = \App\Type::orderby('id')->pluck('name','id');
+      return view('desktop-create',compact(['listemarque','listtype']));
   }
 
   /**
@@ -30,9 +37,46 @@ class DesktopController extends Controller
    *
    * @return Response
    */
-  public function store()
+  public function store(Request $request)
   {
-    
+      //dd($request);
+       $this->validate($request,[
+           'name'=> 'bail|required|max:100',
+           'price' => 'bail|required|numeric',
+           'stock'=> 'bail|required|numeric',
+           'promotion'=> 'bail|required|numeric',
+           'marque'=> 'bail|required|',
+           'type' => 'bail|required',
+           'processor'=> 'bail|required|string',
+           'graphiccard'=> 'bail|required|string',
+           'thumbscreen'=> 'bail|required|numeric',
+           'weight'=> 'bail|required|numeric',
+  ]);
+          //dd($request);
+
+      $newproduct = \App\Product::create([
+          //'id' => ($request['id']+1),
+          'name'=>$request['name'],
+          'reference' => str_random(16),
+          'media' => null,
+          'unitprice' =>$request['price'],
+          'stock'=> $request['stock'],
+          'promotion' => $request['promotion'],
+          'marqueid' => $request['marque'],]);
+          if ($newproduct == true )
+          {
+              $newdesktop = \App\Desktop::create([
+                  'desktopid' => $newproduct->id,
+                  'typeid' => $request['type'],
+                  'processor' => $request['processor'],
+                  'graphiccard' => $request['graphiccard'],
+                  'thumbscreen' => $request['thumbscreen'],
+                  'weight' => $request['weight'],]);
+          }
+
+
+      if ($newdesktop == true)
+          return redirect('desktop');
   }
 
   /**

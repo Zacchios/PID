@@ -10,7 +10,8 @@ class Marque extends Model
     protected $table = 'Marque';
     public $timestamps = true;
 
-    protected $fillable = ['id','name',];
+    protected $fillable = ['id','name'];
+    protected $visible =['id','name'];
 
     public function products()
     {

@@ -1,7 +1,7 @@
 <?php 
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 class ProductController extends Controller 
 {
 
@@ -15,7 +15,7 @@ class ProductController extends Controller
     $products = \App\Product::with('marque')->get();
 
     if ($products != null)
-        return view('product-index', compact ('products'));
+        return view('productindex', compact ('products'));
   }
 
   /**
@@ -25,7 +25,9 @@ class ProductController extends Controller
    */
   public function create()
   {
-    
+     return view('product-create');
+
+
   }
 
   /**
@@ -33,10 +35,21 @@ class ProductController extends Controller
    *
    * @return Response
    */
-  public function store()
+  public function store(Request $request)
   {
-    
+       $newproduct = \App\Product::create([
+           'name'=>$request['name'],
+           'reference' => str_random(16),
+           'media' => null,
+           'unitprice' =>$request['price'],
+           'stock'=> $request['stock'],
+           'promotion' => $request['promotion'],
+           'marqueid' => 1,]);
+      if ($newproduct == true)
+          return route('product.index');
+
   }
+
 
   /**
    * Display the specified resource.

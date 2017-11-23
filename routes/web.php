@@ -30,7 +30,7 @@ Auth::routes();
 Route::get('user-index','UserController@index')->name('user-index');
 Route::get('user/{user}/destroy','UserController@destroyForm')->name('user-destroy');
 
-Route::get('product-index','ProductController@index')->name('product-index');
+
 
 Route::get('upDateRole',['uses'=>'UserController@upDateRole','as'=>'upDateRole']);
 Route::resource('user', 'UserController');
@@ -55,4 +55,8 @@ Route::get('peripherique', 'PeripheriqueController@index')->name('peripherique')
 
 Route::group(['middleware'=>['admin']],function(){
     Route::get('user-index','UserController@index')->name('user-index');
+    Route::get('product-create','ProductController@create')->name('product-create');
+    Route::get('product','ProductController@index');
+    Route::get('desktop-create','DesktopController@create')->name('desktop-create');
+
 });

@@ -13,8 +13,8 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'id','name', 'reference', 'media','unitprice','stock', 'promotion','marqueid',
+    protected $fillable = ['id',
+        'name', 'reference', 'media','unitprice','stock', 'promotion','marqueid',
     ];
     public $timestamps = true;
 
