@@ -22,11 +22,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <header>
-
-    <a href="/"><img src="http://nsa39.casimages.com/img/2017/11/22/171122073147790345.png" width="300px" class="infoland"> </a>
+    <div class="title">
+        Infoland
+    </div>
 
 
 </header>
+
+
+    <div class="flex-center links nav">
+        <a href="/">Home</a>
+        <a href="{{ route('desktop') }}">Desktop</a>
+        <a href="{{ route('laptop') }}">Laptop</a>
+        <a href="{{ route('peripherique') }}">Périphériques</a>
+    </div>
+
 
 <!-- Right Side Of Navbar -->
 <div class="top-right links log">
@@ -45,7 +55,7 @@
                         <a href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                            <div class="log">Logout</div>
+                            Logout
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -56,18 +66,12 @@
             @endguest
 </div>
 
-@yield('content')
-@yield('nav')
 
 
-<div class="cont">
-    <div class="leftpan">
-        @yield('left')
-    </div>
-    <div class="rightpan">
-        @yield('right')
-    </div>
-</div>
+
+    @yield('content')
+
+
 <body>
 
 

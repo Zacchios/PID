@@ -12,7 +12,7 @@
 */
 
     Route::get('/', function () {
-        return view('Front/welcome');
+        return view('welcome');
     });
     Route::get('desktop', function (){
         return view( 'desktop');
@@ -21,7 +21,7 @@
         return view( 'laptop');
     });
     Route::get('peripherique', function (){
-        return view( 'Front/peripherique');
+        return view( 'peripherique');
     });
 
 Auth::routes();

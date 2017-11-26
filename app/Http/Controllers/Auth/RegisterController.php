@@ -74,7 +74,7 @@ class RegisterController extends Controller
             'bilingadress'=>$data['bilingadress'],
             'birthdate' => $data['birthdate'],
             'password' => bcrypt($data['password']),
-             'roleid' => 1,
+             'roleid' => 2,
         ]);
     }
 }
