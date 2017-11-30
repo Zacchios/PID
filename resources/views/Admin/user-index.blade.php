@@ -1,4 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.master')
+
+@section('nav')
+    @include('Admin.navadmin')
+@endsection
+
+@section('left')
+    @include('Admin.Leftpanel')
+@endsection
+
 @section('content')
 
 
@@ -81,7 +90,7 @@
                     <tbody>
 
 
-                        @include('users-table',compact('$users'))
+                        @include('admin/users-table',compact('$users'))
 
 
                     </tbody>

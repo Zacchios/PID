@@ -10,6 +10,6 @@
 @endsection
 
 @section('right')
-    @include('Front.product-index')
+    @include('Front/productindex',compact('$products'));
 @endsection
 

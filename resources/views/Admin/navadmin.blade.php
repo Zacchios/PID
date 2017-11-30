@@ -1,7 +1,7 @@
 
 <div class="flex-center links nav">
 
-	<a href="{{ route('users-index') }}">&nbsp;Users</a>
-	<a href="{{ route('product-index') }}">&nbsp;Produits</a>
-	<a href="{{ route('gestion') }}">&nbsp;Gestion</a>
+	<<a href="{{ route('user-index') }}">&nbsp;Users</a>
+	<a href="{{ route('product') }}">&nbsp;Produits</a>
+	<a href=>&nbsp;Gestion</a>
 </div>

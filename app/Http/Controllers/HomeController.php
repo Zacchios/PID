@@ -23,6 +23,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('Front/welcome');
+        $products = \App\Product::with('marque')->get();
+
+        if ($products != null)
+            return view('Front.welcome',compact('products'));
+
     }
 }

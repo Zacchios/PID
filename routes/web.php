@@ -11,9 +11,8 @@
 |
 */
 
-    Route::get('/', function () {
-        return view('Front/welcome');
-    });
+Route::get('/', 'FrontHomeController@index');
+
     Route::get('desktop', function (){
         return view( 'desktop');
     });
@@ -26,7 +25,7 @@
 
 Auth::routes();
 
-/*Route::get('/home', 'HomeController@index')->name('home');*/
+
 Route::get('user-index','UserController@index')->name('user-index');
 Route::get('user/{user}/destroy','UserController@destroyForm')->name('user-destroy');
 
@@ -46,7 +45,7 @@ Route::resource('peripherique', 'PeripheriqueController');
 Route::resource('screen', 'ScreenController');
 Route::resource('pad', 'PadController');
 
-Route::get('/home', 'HomeController@index')->name('welcome');
+
 Route::get('desktop', 'DesktopController@index')->name('desktop');
 Route::get('laptop', 'LaptopController@index')->name('laptop');
 Route::get('peripherique', 'PeripheriqueController@index')->name('peripherique');
@@ -56,7 +55,7 @@ Route::get('peripherique', 'PeripheriqueController@index')->name('peripherique')
 Route::group(['middleware'=>['admin']],function(){
     Route::get('user-index','UserController@index')->name('user-index');
     Route::get('product-create','ProductController@create')->name('product-create');
-    Route::get('product','ProductController@index');
+    Route::get('product','ProductController@index')->name('product');
     Route::get('desktop-create','DesktopController@create')->name('desktop-create');
-
+    Route::get('AdminHome','HomeController@index');
 });

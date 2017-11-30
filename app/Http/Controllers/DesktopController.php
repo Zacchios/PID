@@ -53,12 +53,13 @@ class DesktopController extends Controller
            'weight'=> 'bail|required|numeric',
   ]);
           //dd($request);
+      $filename = $request->file->getClientOriginalName();
 
       $newproduct = \App\Product::create([
           //'id' => ($request['id']+1),
           'name'=>$request['name'],
           'reference' => str_random(16),
-          'media' => null,
+          'media' => $request['file']->storeAs('storage',$filename),
           'unitprice' =>$request['price'],
           'stock'=> $request['stock'],
           'promotion' => $request['promotion'],

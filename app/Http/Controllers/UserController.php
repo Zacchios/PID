@@ -20,10 +20,10 @@ class UserController extends Controller
         $listrole = \App\Role::all();
 
         if($users != null and $listrole != null )
-        {return view('user-index',compact(['users','listrole']));
+        {return view('admin/user-index',compact(['users','listrole']));
         }
         else
-            return view('user-indexempty');
+            return view('admin/user-indexempty');
     }
 
     /**
@@ -128,7 +128,7 @@ class UserController extends Controller
     public function destroyForm(\App\User $user)
     {
 
-        return view('user-destroy',compact('user'));
+        return view('admin/user-destroy',compact('user'));
 
     }
 
