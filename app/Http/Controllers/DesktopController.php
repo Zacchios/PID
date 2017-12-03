@@ -16,7 +16,7 @@ class DesktopController extends Controller
 
 
       if ($desktops != null)
-          return view('desktopindex', compact ('desktops'));
+          return view('Admin.desktop', compact ('desktops'));
   }
 
   /**
@@ -29,7 +29,7 @@ class DesktopController extends Controller
 
       $listemarque = \App\Marque::orderby('id')->pluck('name','id');
       $listtype = \App\Type::orderby('id')->pluck('name','id');
-      return view('desktop-create',compact(['listemarque','listtype']));
+      return view('admin.desktop-create',compact(['listemarque','listtype']));
   }
 
   /**
@@ -88,8 +88,9 @@ class DesktopController extends Controller
    */
   public function show($id)
   {
-    
+    return $id;
   }
+
 
   /**
    * Show the form for editing the specified resource.
@@ -97,9 +98,11 @@ class DesktopController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function edit($id)
+  public function edit(\App\Desktop $desktop)
   {
-    
+      $listemarque = \App\Marque::orderby('id')->pluck('name','id');
+      $listtype = \App\Type::orderby('id')->pluck('name','id');
+      return view('admin/desktop-edit',compact(['desktop','listemarque','listtype']));
   }
 
   /**
@@ -108,9 +111,67 @@ class DesktopController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(Request $request)
   {
-    
+    //dd($request);
+      $this->validate($request,[
+          'name'=> 'bail|max:100',
+          'price' => 'bail|numeric',
+          'stock'=> 'bail|numeric',
+          'promotion'=> 'bail|numeric',
+          'marque'=> 'bail',
+          'type' => 'bail',
+          'processor'=> 'bail|string',
+          'graphiccard'=> 'bail|string',
+          'thumbscreen'=> 'bail|numeric',
+          'weight'=> 'bail|numeric',
+      ]);
+      //dd($request);
+      $id = $request->id;
+      if($request->hasFile('file')){
+      $filename = $request->file->getClientOriginalName();
+
+      $editproduct = \App\Product::whereid($id)->update([
+          'name'=>$request['name'],
+          'media' => $request['file']->storeAs('storage',$filename),
+          'unitprice' =>$request['price'],
+          'stock'=> $request['stock'],
+          'promotion' => $request['promotion'],
+          'marqueid' => $request['marque'],]);
+      if ($editproduct == true )
+      {
+          $editdesktop = \App\Desktop::whereid($id)->update([
+              'typeid' => $request['type'],
+              'processor' => $request['processor'],
+              'graphiccard' => $request['graphiccard'],
+              'thumbscreen' => $request['thumbscreen'],
+              'weight' => $request['weight'],]);
+      }
+          if ($editdesktop == true)
+              return redirect('desktop');}
+      else
+      {
+          $editproduct = \App\Product::whereid($id)->update([
+              'name'=>$request['name'],
+              'unitprice' =>$request['price'],
+              'stock'=> $request['stock'],
+              'promotion' => $request['promotion'],
+              'marqueid' => $request['marque'],]);
+          if ($editproduct == true )
+          {
+              $editdesktop = \App\Desktop::whereid($id)->update([
+                  'typeid' => $request['type'],
+                  'processor' => $request['processor'],
+                  'graphiccard' => $request['graphiccard'],
+                  'thumbscreen' => $request['thumbscreen'],
+                  'weight' => $request['weight'],]);
+          }
+          if ($editdesktop == true)
+              return redirect('desktop');
+      }
+
+
+
   }
 
   /**
@@ -119,9 +180,26 @@ class DesktopController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function destroy($id)
+  public function destroy(\App\Desktop $desktop)
   {
-    
+      //dd($desktop);
+      $id = $desktop->id;
+      //dd($id);
+
+      $products = \App\Product::find($id);
+      //dd($products);
+      //$desktop->delete();
+      if ($desktop->delete() == true )
+      {
+          $products->delete();
+          return $this->index();
+      }
+
+  }
+  public function destroyform (\App\Desktop $desktop){
+     // $products = \App\Product::find($desktop);
+
+      return view('admin/desktop-destroy',compact('desktop'));
   }
   
 }

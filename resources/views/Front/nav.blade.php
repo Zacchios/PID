@@ -1,7 +1,7 @@
 
 <div class="flex-center links nav">
 
-	<a href="{{ route('desktop') }}">&nbsp;Desktop</a>
-	<a href="{{ route('laptop') }}">&nbsp;Laptop</a>
-	<a href="{{ route('peripherique') }}">&nbsp;Périphériques</a>
+	<a href="#">&nbsp;Desktop</a>
+	<a href="#">&nbsp;Laptop</a>
+	<a href="#">&nbsp;Périphériques</a>
 </div>

@@ -1,5 +1,15 @@
-@extends('layouts.master')
-@section('content')
+@extends('layouts.admin')
+
+@section('nav')
+    @include('Admin.navadmin')
+@endsection
+
+@section('left')
+    @include('Admin.Leftpanel')
+@endsection
+
+@section('right')
+
     <div class="col-sm-offset-4 col-sm-4">
         <br>
         <div class="panel panel-primary">
@@ -75,11 +85,3 @@
     </div>
 
 @endsection
-<!--<script type="text/javascript">
-
-    function choixproduit(){
-        console.log($('option:selected',this).text());
-        if ($('option:selected',this).text() == 'Ordinateur')
-            $('#name').attr().visible();
-    }
-</script>-->

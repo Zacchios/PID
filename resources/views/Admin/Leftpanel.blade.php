@@ -9,7 +9,7 @@
 
 <ol>
     <li>
-		<a href="#" class="log">
+		<a href={{route('user-index')}} class="log">
 
 			Gérer les utilisateurs
 
@@ -19,10 +19,15 @@
     <li>
     <a href="#" class="log">
 
-        Gérer chic
+        Gérer les produits
 
 
     </a>
+        <lu><a href="{{route('desktopindex')}}">Desktops</a></lu><br>
+        <lu>Laptops</lu><br>
+        <lu>Screens</lu><br>
+        <lu>Mouses</lu><br>
+        <lu>keyboards</lu>
     </li>
     <li>
     <a href="#" class="log">

@@ -27,7 +27,7 @@ Auth::routes();
 
 
 Route::get('user-index','UserController@index')->name('user-index');
-Route::get('user/{user}/destroy','UserController@destroyForm')->name('user-destroy');
+
 
 
 
@@ -54,8 +54,14 @@ Route::get('peripherique', 'PeripheriqueController@index')->name('peripherique')
 
 Route::group(['middleware'=>['admin']],function(){
     Route::get('user-index','UserController@index')->name('user-index');
+    Route::get('user/{user}/destroy','UserController@destroyForm')->name('user-destroy');
     Route::get('product-create','ProductController@create')->name('product-create');
     Route::get('product','ProductController@index')->name('product');
+    Route::get('desktop','DesktopController@index')->name('desktopindex');
     Route::get('desktop-create','DesktopController@create')->name('desktop-create');
-    Route::get('AdminHome','HomeController@index');
+    Route::get('desktop/{desktop}/show','DesktopController@show')->name('admindesktopshow');
+    Route::get('desktop/{desktop}/edit','DesktopController@edit')->name('desktop.edit');
+
+    Route::get('desktop/{desktop}/destroy','DesktopController@destroyform')->name('desktop-destroy');
+    Route::get('AdminHome','HomeController@index')->name('AdminHome');
 });

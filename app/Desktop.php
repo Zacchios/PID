@@ -19,7 +19,7 @@ class Desktop extends Product
 
     public function product()
     {
-        return $this->belongsTo(\App\Product::class,'desktopid','id');
+        return $this->belongsTo(\App\Product::class,'id','id');
     }
 
 }

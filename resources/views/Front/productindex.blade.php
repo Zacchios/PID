@@ -2,7 +2,7 @@
     <div class="vignette bottom col-md-3">
 
         <img src="{{asset($product->media)}}">
-        </br>php art
+        </br>
         {{$product->name}}<br>
         {{$product->marque->name}}</br>
         {{$product->unitprice}}€</br>

@@ -26,7 +26,7 @@ class HomeController extends Controller
         $products = \App\Product::with('marque')->get();
 
         if ($products != null)
-            return view('Front.welcome',compact('products'));
+            return view('Admin.welcomeadmin',compact('products'));
 
     }
 }

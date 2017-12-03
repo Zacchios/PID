@@ -10,5 +10,5 @@
 @endsection
 
 @section('right')
-    @include('Front/productindex',compact('$products'));
+    @include('Admin/desktopindex',compact('$desktops'));
 @endsection
